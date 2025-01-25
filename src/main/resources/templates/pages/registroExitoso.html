@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="https://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro Exitoso</title>
+  <style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        background-color: #f9f9f9;
+        color: #333;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+        color: #007bff;
+        text-align: center;
+    }
+    span {
+        font-weight: bold;
+    }
+    .info {
+        margin-bottom: 15px;
+    }
+    button {
+        display: block;
+        margin: 20px auto;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>Registro Exitoso</h2>
+
+  <div class="info">
+    <span>Nombre: </span>
+    <span th:text="${clinica.nombre}"></span>
+  </div>
+
+  <div class="info">
+    <span>Cédula: </span>
+    <span th:text="${clinica.cedula}"></span>
+  </div>
+
+  <div class="info">
+    <span>Fecha de Nacimiento: </span>
+    <span th:text="${clinica.fechaNacimiento}"></span>
+  </div>
+
+  <div class="info">
+    <span>Género: </span>
+    <span th:text="${clinica.genero}"></span>
+  </div>
+
+  <div class="info">
+    <span>Dirección: </span>
+    <span th:text="${clinica.direccion}"></span>
+  </div>
+
+  <div class="info">
+    <span>Teléfono: </span>
+    <span th:text="${clinica.telefono}"></span>
+  </div>
+
+  <div class="info">
+    <span>Correo: </span>
+    <span th:text="${clinica.correo}"></span>
+  </div>
+
+  <div class="info">
+    <span>Estado Civil: </span>
+    <span th:text="${clinica.estadoCivil}"></span>
+  </div>
+
+  <div class="info">
+    <span>Alergias: </span>
+    <span th:text="${clinica.alergias}"></span>
+  </div>
+
+  <div class="info">
+    <span>Observaciones: </span>
+    <span th:text="${clinica.observaciones}"></span>
+  </div>
+
+  <button onclick="window.location.href='/index'">Volver a Inicio</button>
+</div>
+
+</body>
+</html>

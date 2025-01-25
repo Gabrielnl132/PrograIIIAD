@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http//www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Historia Clínica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.5;
+        }
+        form {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        div {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        span {
+            color: red;
+            font-size: 0.9em;
+            display: block;
+            margin-top: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Formulario de Historia Clínica</h2>
+
+<form th:action="@{/registrar}" th:object="${clinica}" method="post">
+
+    <!-- Nombre -->
+    <div>
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" th:field="*{nombre}" required>
+        <span th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}"></span>
+    </div>
+
+    <!-- Cédula -->
+    <div>
+        <label for="cedula">Cédula:</label>
+        <input type="text" id="cedula" th:field="*{cedula}" required>
+        <span th:if="${#fields.hasErrors('cedula')}" th:errors="*{cedula}"></span>
+    </div>
+
+    <!-- Fecha de Nacimiento -->
+    <div>
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" th:field="*{fechaNacimiento}" required>
+        <span th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors="*{fechaNacimiento}"></span>
+    </div>
+
+    <!-- Género -->
+    <div>
+        <label for="genero">Género:</label>
+        <select id="genero" th:field="*{genero}" required>
+            <option value="" disabled selected>Seleccione</option>
+            <option th:each="genero : ${generos}" th:value="${genero}" th:text="${genero}"></option>
+        </select>
+        <span th:if="${#fields.hasErrors('genero')}" th:errors="*{genero}"></span>
+    </div>
+
+    <!-- Dirección -->
+    <div>
+        <label for="direccion">Dirección:</label>
+        <textarea id="direccion" th:field="*{direccion}" rows="3" required></textarea>
+        <span th:if="${#fields.hasErrors('direccion')}" th:errors="*{direccion}"></span>
+    </div>
+
+    <!-- Teléfono -->
+    <div>
+        <label for="telefono">Teléfono:</label>
+        <input type="tel" id="telefono" th:field="*{telefono}" required>
+        <span th:if="${#fields.hasErrors('telefono')}" th:errors="*{telefono}"></span>
+    </div>
+
+    <!-- Correo -->
+    <div>
+        <label for="correo">Correo:</label>
+        <input type="email" id="correo" th:field="*{correo}" required>
+        <span th:if="${#fields.hasErrors('correo')}" th:errors="*{correo}"></span>
+    </div>
+
+    <!-- Estado Civil -->
+    <div>
+        <label for="estadoCivil">Estado Civil:</label>
+        <select id="estadoCivil" th:field="*{estadoCivil}" required>
+            <option value="" disabled selected>Seleccione</option>
+            <option th:each="estado : ${estadosCiviles}" th:value="${estado}" th:text="${estado}"></option>
+        </select>
+        <span th:if="${#fields.hasErrors('estadoCivil')}" th:errors="*{estadoCivil}"></span>
+    </div>
+
+    <!-- Alergias -->
+    <div>
+        <label for="alergias">Alergias:</label>
+        <textarea id="alergias" th:field="*{alergias}" rows="3"></textarea>
+        <span th:if="${#fields.hasErrors('alergias')}" th:errors="*{alergias}"></span>
+    </div>
+
+    <!-- Observaciones -->
+    <div>
+        <label for="observaciones">Observaciones:</label>
+        <textarea id="observaciones" th:field="*{observaciones}" rows="3"></textarea>
+        <span th:if="${#fields.hasErrors('observaciones')}" th:errors="*{observaciones}"></span>
+    </div>
+
+    <button type="submit" >Registrar</button>
+</form>
+
+</body>
+</html>
