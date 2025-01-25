@@ -20,11 +20,9 @@ public class ClinicaControlador {
         Clinica clinica = new Clinica();
         model.addAttribute("clinica", clinica);
 
-        // Lista de géneros para seleccionar
         List<String> listaGeneros = Arrays.asList("Masculino", "Femenino", "Otro");
         model.addAttribute("generos", listaGeneros);
 
-        // Lista de estados civiles para seleccionar
         List<String> listaEstadosCiviles = Arrays.asList("Soltero", "Casado", "Divorciado", "Viudo");
         model.addAttribute("estadosCiviles", listaEstadosCiviles);
 
@@ -38,7 +36,6 @@ public class ClinicaControlador {
             Model model) {
 
         if (bindingResult.hasErrors()) {
-            // Si hay errores de validación, se vuelve a cargar las listas de selección
             List<String> listaGeneros = Arrays.asList("Masculino", "Femenino", "Otro");
             model.addAttribute("generos", listaGeneros);
 
@@ -48,7 +45,7 @@ public class ClinicaControlador {
             model.addAttribute("errores", bindingResult.getAllErrors());
             return "pages/formulario";
         } else {
-            // Simular el registro de la historia clínica
+
             System.out.println("Historia clínica registrada: " + clinica);
             return "pages/registroExitoso";
         }
